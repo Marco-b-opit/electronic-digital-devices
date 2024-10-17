@@ -1,0 +1,59 @@
+#! /opt/homebrew/Cellar/icarus-verilog/12.0/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/12.0/lib/ivl/va_math.vpi";
+S_0x154804170 .scope module, "tb_and_gate" "tb_and_gate" 2 1;
+ .timescale 0 0;
+v0x154814760_0 .var "aValue", 0 0;
+v0x154814800_0 .var "bValue", 0 0;
+v0x1548148b0_0 .net "yValue", 0 0, L_0x154814980;  1 drivers
+S_0x1548042f0 .scope module, "instance1" "and_gate" 2 7, 3 1 0, S_0x154804170;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "Y";
+L_0x154814980 .functor AND 1, v0x154814760_0, v0x154814800_0, C4<1>, C4<1>;
+v0x154804510_0 .net "A", 0 0, v0x154814760_0;  1 drivers
+v0x1548145c0_0 .net "B", 0 0, v0x154814800_0;  1 drivers
+v0x154814660_0 .net "Y", 0 0, L_0x154814980;  alias, 1 drivers
+    .scope S_0x154804170;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x154814760_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x154814800_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x154814760_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x154814800_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x154814760_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x154814800_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x154814760_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x154814800_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 15 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0x154804170;
+T_1 ;
+    %vpi_call 2 20 "$monitor", "A = %b, B = %b, Y = %b", v0x154814760_0, v0x154814800_0, v0x1548148b0_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "and_gate_tb.v";
+    "and_gate.v";
